@@ -21,3 +21,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
+
+      - name: Setup
+        run: composer global require hirak/prestissimo
+
+      - name: Install dependencies
+        run: composer install --optimize-autoloader --prefer-dist --no-progress --no-interaction --no-suggest
